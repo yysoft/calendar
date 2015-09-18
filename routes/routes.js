@@ -1,5 +1,5 @@
 var loginRouter=require('./login');
-
+var Event=require('../models/events-model');
 
 module.exports=function(server){
     "use strict";

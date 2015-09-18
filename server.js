@@ -3,33 +3,25 @@ var bodyParser=require('body-parser');
 var cookieParser=require('cookie-parser');
 var path=require('path');
 var session=require('express-session');
-var mysql=require('mysql');
-var morgan=require('morgan');
 
+var morgan=require('morgan');
+var route=require('./routes/routes');
 
 var server=express();
 
-var connection=mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '0000',
-    database : 'test'
-});
 
-var route=require('./routes/routes');
+//会话管理
+server.use(session({
+    secret:'SECRET',
+    resave:false,
+    saveUninitialized:true,
+    cookie:{maxAge:60*60*1000}
+}));
+
 
 //设置路由
 route(server);
 
-//连接数据库
-connection.connect(function(err) {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
-
-    console.log('connected as id ' + connection.threadId);
-});
 
 //设置模版引擎
 server.set('views',path.join(__dirname,'views'));
@@ -45,13 +37,6 @@ server.use(cookieParser());
 //设置静态文件路径
 server.use(express.static(path.join(__dirname,'static')));
 
-//会话管理
-server.use(session({
-    secret:'SECRET',
-    resave:false,
-    saveUninitialized:true,
-    cookie:{maxAge:60*60*1000}
-}));
 
 // catch 404 and forward to error handler
 server.use(function(req, res, next) {

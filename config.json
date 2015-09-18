@@ -1,0 +1,12 @@
+{
+  "server":"localhost",
+  "port":"3306",
+  "user":"root",
+  "password":"0000",
+  "database":"calendar",
+  "pool":{
+    "max":5,
+    "min":0,
+    "idle":10000
+  }
+}
