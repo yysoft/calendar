@@ -1,0 +1,21 @@
+{
+  "name": "calendar",
+  "version": "0.0.1",
+  "private": true,
+  "description": "个人日程管理",
+  "homepage": "http://www.caiban.com",
+  "author": "laoma",
+  "dependencies": {
+    "gulp-jshint": "*",
+    "gulp-imagemin": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*",
+    "gulp-ng-html2js": "*",
+    "gulp-sass": "*",
+    "gulp-concat": "*",
+    "gulp-minify-css": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-ngmin": "*",
+    "gulp-cssmin":"*"
+  }
+}
