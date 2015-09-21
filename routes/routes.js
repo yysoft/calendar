@@ -1,5 +1,3 @@
-var loginRouter=require('./login');
-var Event=require('../models/events-model');
 
 module.exports=function(server){
     "use strict";
@@ -9,7 +7,4 @@ module.exports=function(server){
             title:'日历'
         });
     });
-
-    server.use('/login',loginRouter);
-
 };

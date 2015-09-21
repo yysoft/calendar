@@ -9,11 +9,10 @@ var route=require('./routes/routes');
 
 var server=express();
 
-
 //会话管理
 server.use(session({
     secret:'SECRET',
-    resave:false,
+    resave:true,
     saveUninitialized:true,
     cookie:{maxAge:60*60*1000}
 }));
