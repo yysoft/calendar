@@ -37,12 +37,14 @@ eventsRouter.get('/',function(req,res){
 
 eventsRouter.post('/',function(req,res){
     "use strict";
+    //这儿好像数据库会自动生成两个字段 createAt,updateAt
+    //是否有必要再手动添加这两个属性
     var now=Date.now();
     req.body.gmt_created=now;
     req.body.gmt_modified=now;
 
     Event
-        .build()
+        .build(req.body)
         .save()
         .then(function(err,event){
             if(!err){
@@ -53,6 +55,12 @@ eventsRouter.post('/',function(req,res){
 
 eventsRouter.get('/:eventId',function(req,res){
     "use strict";
+
+    Event
+        .findById(req.params.eventId)
+        .then((value) => {
+            res.json(value);
+        });
 
 });
 
